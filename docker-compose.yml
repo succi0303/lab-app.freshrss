@@ -20,3 +20,4 @@ services:
       CRON_MIN: '2,32'
       FRESHRSS_ENV: production
       LISTEN: 0.0.0.0:80
+    env_file: stack.env

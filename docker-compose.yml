@@ -1,0 +1,22 @@
+version: "2.4"
+
+services:
+  freshrss:
+    image: freshrss/freshrss:latest
+    container_name: freshrss
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: 10m
+    volumes:
+      - ./data:/var/www/FreshRSS/data
+      - ./extensions:/var/www/FreshRSS/extensions
+      # - ./config.custom.php:/var/www/FreshRSS/data/config.custom.php
+      # - ./config-user.custom.php:/var/www/FreshRSS/data/config-user.custom.php
+    ports:
+      - 3002:80
+    environment:
+      TZ: Asia/Tokyo
+      CRON_MIN: '2,32'
+      FRESHRSS_ENV: production
+      LISTEN: 0.0.0.0:80

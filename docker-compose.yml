@@ -14,7 +14,7 @@ services:
       # - ./config.custom.php:/var/www/FreshRSS/data/config.custom.php
       # - ./config-user.custom.php:/var/www/FreshRSS/data/config-user.custom.php
     ports:
-      - 3002:80
+      - ${PORT}:80
     environment:
       TZ: Asia/Tokyo
       CRON_MIN: '2,32'

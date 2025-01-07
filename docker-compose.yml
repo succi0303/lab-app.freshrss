@@ -3,7 +3,7 @@ version: "2.4"
 services:
   freshrss:
     image: freshrss/freshrss:latest
-    container_name: freshrss
+    container_name: ${CONTAINER_NAME}
     restart: unless-stopped
     logging:
       options:

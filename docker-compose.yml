@@ -9,8 +9,8 @@ services:
       options:
         max-size: 10m
     volumes:
-      - data:/var/www/FreshRSS/data
-      - extensions:/var/www/FreshRSS/extensions
+      - ./data:/var/www/FreshRSS/data
+      - ./extensions:/var/www/FreshRSS/extensions
       # - ./config.custom.php:/var/www/FreshRSS/data/config.custom.php
       # - ./config-user.custom.php:/var/www/FreshRSS/data/config-user.custom.php
     ports:
@@ -21,6 +21,3 @@ services:
       FRESHRSS_ENV: production
       LISTEN: 0.0.0.0:80
     env_file: stack.env
-volumes:
-  data:
-  extenstions:

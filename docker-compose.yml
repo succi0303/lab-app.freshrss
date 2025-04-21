@@ -1,7 +1,7 @@
 services:
   freshrss:
     image: freshrss/freshrss:latest
-    container_name: ${CONTAINER_NAME}
+    container_name: freshrss
     restart: unless-stopped
     logging:
       options:
@@ -12,13 +12,23 @@ services:
       # - ./config.custom.php:/var/www/FreshRSS/data/config.custom.php
       # - ./config-user.custom.php:/var/www/FreshRSS/data/config-user.custom.php
     ports:
-      - ${PORT}:80
+      - ${FRESHRSS_PORT}:80
     environment:
       TZ: Asia/Tokyo
       CRON_MIN: '2,32'
       FRESHRSS_ENV: production
       LISTEN: 0.0.0.0:80
     env_file: stack.env
+  rss-bridge:
+      image: rssbridge/rss-bridge:latest
+      container_name: rss-bridge
+      restart: unless-stopped
+      volumes:
+          - bridge-config:/config
+      ports:
+          - ${BRIDGE_PORT}:80
+
 volumes:
   data:
   extensions:
+  bridge-config:
